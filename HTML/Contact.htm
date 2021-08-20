@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Vatika</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../ASSETS/Logo.png" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../CSS/Contact.css" />
+  <link rel="stylesheet" href="../CSS/header.css" />
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+   <!-- JS -->
+  <script type="text/javascript" src="../JS/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="../JS/custom.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Header Start -->
+
+ <header style="background-color: #222635;">
+  <div class="containers">
+    <a href="../index.htm"><img src="../ASSETS/cross.png" width="20px" height="20px"></a>
+    <!-- <i class="fa fa-times" aria-hidden="true"></i> -->
+    <!-- <i class="fas fa-window-close"></i> -->
+    <div class="header_left p-4">
+      <center><a href="../index.htm" class="flex title-font font-medium -mr-0 md:justify-start text-gray-900">
+        <img src="../ASSETS/Logo.png" width="40px" height="40px">
+        <span class="text-2xl px-2 text-white" style="font-family: cursive;">Vatika</span>
+      </a></center>
+    </div>  
+  </div>
+  </header>
+
+  <!-- Header End -->
+
+  
+  <!-- Contact Page Start -->
+
+  <div class="container">
+    <span class="big-circle"></span>
+    <img src="../ASSETS/shape.png" class="square" alt="" />
+    <div class="form">
+      <div class="contact-info">
+        <h3 class="title">Let's get in touch</h3>
+        <p class="text">
+          If you have any Query , Please feel free to fill out this form !!
+        </p>
+
+        <div class="info">
+          <div class="information">
+            <img src="../ASSETS/location.png" class="icon" alt="" />
+            <p>F-18 Street No.4 West Chander Nagar, Krishna Nagar Delhi-51</p>
+          </div>
+          <div class="information">
+            <img src="../ASSETS/email.png" class="icon" alt="" />
+            <p>priya.vatika076@gmail.com</p>
+          </div>
+          <div class="information">
+            <img src="../ASSETS/phone.png" class="icon" alt="" />
+            <p>9999348444
+            <br>9999348666</br></p>
+          </div>
+        </div>
+
+        <div class="social-media">
+          <p>Connect with us :</p>
+          <div class="social-icons">
+            <a href="#">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <span class="circle one"></span>
+        <span class="circle two"></span>
+
+        <div class="contact-form">
+          <span class="circle one"></span>
+          <span class="circle two"></span>
+          <form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off">
+            <h3 class="title">Contact us</h3>
+            <div class="input-container">
+
+              <input id="nameField" name="entry.295200127" class="input" type="text"
+                required>
+              <label for="">Username</label>
+              <span>Username</span>
+            </div>
+            <div class="input-container">
+            <input id="emailField" name="entry.799216379" class="input" type="email" required>
+            <label for="">Email</label>
+              <span>Email</span>
+            </div>
+            <div class="input-container">
+            <input id="mobField" name="entry.1361319175" class="input" type="text"
+              pattern="^\d{10}$" required>
+              <label for="">Phone</label>
+              <span>Phone</span>
+            </div>
+            <div class="input-container textarea">
+              <textarea id="message" name="entry.1133416241" class="input" type="text"
+                required></textarea>
+            <label for="">Message</label>
+              <span>Message</span>
+            </div>
+            <input id="send" type="submit" value="Send" class="btn" />
+          </form>
+          <h3 id="success-msg" style="text-align: center !important; margin-top:190px !important; display:none; color:#fff">Thank You For Contacting Us..... Our Team Will Contact You Soon !!</h3>
+        </div>
+      </div>
+    </div>
+
+    <script src="../JS/app.js"></script>
+    <script>
+      function postToGoogle() {
+        var field1 = $("#nameField").val();
+        var field2 = $("#emailField").val();
+        var field3 = $("#mobField").val();
+        var field4 = $("#message").val();
+
+        if (field1 == "") {
+          alert('Please Fill Your Name');
+          document.getElementById("nameField").focus();
+          return false;
+        }
+        if (field2 == "") {
+          alert('Please Fill Your Email');
+          document.getElementById("emailField").focus();
+          return false;
+        }
+        if (field3 == "" || field3.length > 10 || field3.length < 10) {
+          alert('Please Fill Your Mobile Number');
+          document.getElementById("mobField").focus();
+          return false;
+        }
+        if (field4 == "") {
+          alert('Please Fill Your Query');
+          document.getElementById("message").focus();
+          return false;
+        }
+
+        $.ajax({
+          url: "https://docs.google.com/forms/d/e/1FAIpQLSeY3yhPEXxMf5kBqFYOhiD_Xyqo6oNKxnXq-0xCzCSsEhaOlg/formResponse?",
+          data: {
+          "entry.295200127": field1,
+          "entry.799216379": field2,
+          "entry.1361319175": field3,
+          "entry.1133416241": field4
+          },
+          type: "POST",
+          dataType: "xml",
+          success: function (d) {},
+          error: function (x, y, z) {
+
+            $('#success-msg').show();
+            $('#form').hide();
+
+          }
+        });
+        return false;
+      }
+    </script>
+
+    <!-- Contact Page End -->
+
+
+    <!-- <div class="bg-gray-100">
+      <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+        <p class="text-gray-700 text-sm text-center sm:text-left ml-4">© 2020 Vatika Pvt. Ltd. All rights reserved
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+          <a class="text-gray-500">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+              viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+              viewBox="0 0 24 24">
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+              </path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-5 h-5" viewBox="0 0 24 24">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+              <path stroke="none"
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+      </div>
+    </div> -->
+
+</body>
+</html>
